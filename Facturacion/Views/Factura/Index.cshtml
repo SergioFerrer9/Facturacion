@@ -1,0 +1,55 @@
+﻿@section Scripts{
+    @Scripts.Render("~/Scripts/jquery.min.js ")
+    @Scripts.Render("~/Scripts/kendo.all.min.js ")
+    @Styles.Render("~/Content/kendo.common.min.css")
+    @Styles.Render("~/Content/kendo.default.min.css")
+
+
+
+    <div id="example" class="content-wrapper">
+
+        <div class="demo-section k-content">
+            <h4>Cliente</h4>
+            <input id="cliente" width="48" height="48">
+            <h4>Procuto</h4>
+            <input id="producto" width="48" height="48">
+            <br />
+            <input type="number" id="cantidad" width="48" height="48">
+            <br />
+            <input type="submit" id="boton" value="Agregar"/>
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+
+                $("#cliente").kendoDropDownList({
+                    dataTextField: "nombreCliente",
+                    dataValueField: "idCliente",
+                    dataSource: {
+                        transport: {
+                            read: "Factura/ListarCliente"
+                        }
+                    }
+                });
+
+                $("#producto").kendoDropDownList({
+                    dataTextField: "nombreProducto",
+                    dataValueField: "idProducto",
+                    dataSource: {
+                        transport: {
+                            read: "Factura/ListarProducto"
+                        }
+                    }
+                });
+
+            });
+        </script>
+
+    </div>
+
+
+
+
+}
+
